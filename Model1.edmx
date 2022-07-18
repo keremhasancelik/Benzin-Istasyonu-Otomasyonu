@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Db_SayacModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Sayac">
+          <Key>
+            <PropertyRef Name="SAYACID" />
+          </Key>
+          <Property Name="SAYACID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URUN" Type="int" />
+          <Property Name="POMPA" Type="smallint" />
+          <Property Name="BRMFIYATI" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ACILIS" Type="int" />
+          <Property Name="KAPANIS" Type="int" />
+          <Property Name="SATILANLITRE" Type="int" />
+          <Property Name="TUTAR" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TARIH" Type="date" />
+        </EntityType>
+        <EntityContainer Name="Db_SayacModelStoreContainer">
+          <EntitySet Name="Tbl_Sayac" EntityType="Self.Tbl_Sayac" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Db_SayacModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Sayac">
+          <Key>
+            <PropertyRef Name="SAYACID" />
+          </Key>
+          <Property Name="SAYACID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URUN" Type="Int32" />
+          <Property Name="POMPA" Type="Int16" />
+          <Property Name="BRMFIYATI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACILIS" Type="Int32" />
+          <Property Name="KAPANIS" Type="Int32" />
+          <Property Name="SATILANLITRE" Type="Int32" />
+          <Property Name="TUTAR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="Db_SayacEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Sayac" EntityType="Self.Tbl_Sayac" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Db_SayacModelStoreContainer" CdmEntityContainer="Db_SayacEntities1">
+          <EntitySetMapping Name="Tbl_Sayac">
+            <EntityTypeMapping TypeName="Db_SayacModel.Tbl_Sayac">
+              <MappingFragment StoreEntitySet="Tbl_Sayac">
+                <ScalarProperty Name="SAYACID" ColumnName="SAYACID" />
+                <ScalarProperty Name="URUN" ColumnName="URUN" />
+                <ScalarProperty Name="POMPA" ColumnName="POMPA" />
+                <ScalarProperty Name="BRMFIYATI" ColumnName="BRMFIYATI" />
+                <ScalarProperty Name="ACILIS" ColumnName="ACILIS" />
+                <ScalarProperty Name="KAPANIS" ColumnName="KAPANIS" />
+                <ScalarProperty Name="SATILANLITRE" ColumnName="SATILANLITRE" />
+                <ScalarProperty Name="TUTAR" ColumnName="TUTAR" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

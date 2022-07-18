@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Db_SayacDataSet" targetNamespace="http://tempuri.org/Db_SayacDataSet.xsd" xmlns:mstns="http://tempuri.org/Db_SayacDataSet.xsd" xmlns="http://tempuri.org/Db_SayacDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Db_SayacConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Db_SayacConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Sayac_Proje.Properties.Settings.GlobalReference.Default.Db_SayacConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Tbl_SayacTableAdapter" GeneratorDataComponentClassName="Tbl_SayacTableAdapter" Name="Tbl_Sayac" UserDataComponentName="Tbl_SayacTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Db_SayacConnectionString (Settings)" DbObjectName="Db_Sayac.dbo.Tbl_Sayac" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP (10) URUN, POMPA, BRMFIYATI, ACILIS, KAPANIS, SATILANLITRE, TUTAR, SAYACID, TARIH FROM Tbl_Sayac ORDER BY TARIH DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="POMPA" DataSetColumn="POMPA" />
+              <Mapping SourceColumn="ACILIS" DataSetColumn="ACILIS" />
+              <Mapping SourceColumn="KAPANIS" DataSetColumn="KAPANIS" />
+              <Mapping SourceColumn="SATILANLITRE" DataSetColumn="SATILANLITRE" />
+              <Mapping SourceColumn="TUTAR" DataSetColumn="TUTAR" />
+              <Mapping SourceColumn="SAYACID" DataSetColumn="SAYACID" />
+              <Mapping SourceColumn="BRMFIYATI" DataSetColumn="BRMFIYATI" />
+              <Mapping SourceColumn="URUN" DataSetColumn="URUN" />
+              <Mapping SourceColumn="TARIH" DataSetColumn="TARIH" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Db_SayacDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Db_SayacDataSet" msprop:Generator_UserDSName="Db_SayacDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Tbl_Sayac" msprop:Generator_TableClassName="Tbl_SayacDataTable" msprop:Generator_TableVarName="tableTbl_Sayac" msprop:Generator_RowChangedName="Tbl_SayacRowChanged" msprop:Generator_TablePropName="Tbl_Sayac" msprop:Generator_RowDeletingName="Tbl_SayacRowDeleting" msprop:Generator_RowChangingName="Tbl_SayacRowChanging" msprop:Generator_RowEvHandlerName="Tbl_SayacRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_SayacRowDeleted" msprop:Generator_RowClassName="Tbl_SayacRow" msprop:Generator_UserTableName="Tbl_Sayac" msprop:Generator_RowEvArgName="Tbl_SayacRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="POMPA" msprop:Generator_ColumnVarNameInTable="columnPOMPA" msprop:Generator_ColumnPropNameInRow="POMPA" msprop:Generator_ColumnPropNameInTable="POMPAColumn" msprop:Generator_UserColumnName="POMPA" type="xs:short" minOccurs="0" />
+              <xs:element name="ACILIS" msprop:Generator_ColumnVarNameInTable="columnACILIS" msprop:Generator_ColumnPropNameInRow="ACILIS" msprop:Generator_ColumnPropNameInTable="ACILISColumn" msprop:Generator_UserColumnName="ACILIS" type="xs:int" minOccurs="0" />
+              <xs:element name="KAPANIS" msprop:Generator_ColumnVarNameInTable="columnKAPANIS" msprop:Generator_ColumnPropNameInRow="KAPANIS" msprop:Generator_ColumnPropNameInTable="KAPANISColumn" msprop:Generator_UserColumnName="KAPANIS" type="xs:int" minOccurs="0" />
+              <xs:element name="SATILANLITRE" msprop:Generator_ColumnVarNameInTable="columnSATILANLITRE" msprop:Generator_ColumnPropNameInRow="SATILANLITRE" msprop:Generator_ColumnPropNameInTable="SATILANLITREColumn" msprop:Generator_UserColumnName="SATILANLITRE" type="xs:int" minOccurs="0" />
+              <xs:element name="TUTAR" msprop:Generator_ColumnVarNameInTable="columnTUTAR" msprop:Generator_ColumnPropNameInRow="TUTAR" msprop:Generator_ColumnPropNameInTable="TUTARColumn" msprop:Generator_UserColumnName="TUTAR" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SAYACID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnSAYACID" msprop:Generator_ColumnPropNameInRow="SAYACID" msprop:Generator_ColumnPropNameInTable="SAYACIDColumn" msprop:Generator_UserColumnName="SAYACID" type="xs:int" />
+              <xs:element name="BRMFIYATI" msprop:Generator_ColumnVarNameInTable="columnBRMFIYATI" msprop:Generator_ColumnPropNameInRow="BRMFIYATI" msprop:Generator_ColumnPropNameInTable="BRMFIYATIColumn" msprop:Generator_UserColumnName="BRMFIYATI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="URUN" msprop:Generator_ColumnVarNameInTable="columnURUN" msprop:Generator_ColumnPropNameInRow="URUN" msprop:Generator_ColumnPropNameInTable="URUNColumn" msprop:Generator_UserColumnName="URUN" type="xs:int" minOccurs="0" />
+              <xs:element name="TARIH" msprop:Generator_ColumnVarNameInTable="columnTARIH" msprop:Generator_ColumnPropNameInRow="TARIH" msprop:Generator_ColumnPropNameInTable="TARIHColumn" msprop:Generator_UserColumnName="TARIH" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Tbl_Sayac" />
+      <xs:field xpath="mstns:SAYACID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
