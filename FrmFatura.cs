@@ -25,18 +25,26 @@ namespace Sayac_Proje
 
         private void BtnEkle_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("insert into Tbl_Fatura(FATURANO,FATKURULUS,FATTUTAR,FATSONODEME,FATDURUM,FATACIKLAMA) VALUES(@p1,@p2,@p3,@p4,@p5,@p6)", conn);
-            komut.Parameters.AddWithValue("@p1", TxtFaturaNO.Text);
-            komut.Parameters.AddWithValue("@p2", TxtFaturaKurum.Text);
-            komut.Parameters.AddWithValue("@p3", Convert.ToDecimal( TxtFaturaTutar.Text));
-            komut.Parameters.AddWithValue("@p4", dateTimePicker1.Value);
-            komut.Parameters.AddWithValue("@p5", Convert.ToByte( TxtFaturaDurum.Text));
-            komut.Parameters.AddWithValue("@p6", richTextBox1.Text);
-            komut.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Eklendi");
+            try
+            {
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                conn.Open();
+                SqlCommand komut = new SqlCommand("insert into Tbl_Fatura(FATURANO,FATKURULUS,FATTUTAR,FATSONODEME,FATDURUM,FATACIKLAMA) VALUES(@p1,@p2,@p3,@p4,@p5,@p6)", conn);
+                komut.Parameters.AddWithValue("@p1", TxtFaturaNO.Text);
+                komut.Parameters.AddWithValue("@p2", TxtFaturaKurum.Text);
+                komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(TxtFaturaTutar.Text));
+                komut.Parameters.AddWithValue("@p4", dateTimePicker1.Value);
+                komut.Parameters.AddWithValue("@p5", Convert.ToByte(TxtFaturaDurum.Text));
+                komut.Parameters.AddWithValue("@p6", richTextBox1.Text);
+                komut.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Eklendi");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Fatura Durumuna ödendiyse 1, ödenmediyse 0 yazınız");
+            }
         }
 
         private void BtnListele_Click(object sender, EventArgs e)
@@ -64,19 +72,28 @@ namespace Sayac_Proje
 
         private void BtnGuncelle_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("update Tbl_Fatura set FATURANO=@p1,FATKURULUS=@p2,FATTUTAR=@p3,FATSONODEME=@p4,FATDURUM=@p5,FATACIKLAMA=@p6 where FATURAID=@p7 ", conn);
-            komut.Parameters.AddWithValue("@p1", TxtFaturaNO.Text);
-            komut.Parameters.AddWithValue("@p2", TxtFaturaKurum.Text);
-            komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(TxtFaturaTutar.Text));
-            komut.Parameters.AddWithValue("@p4", dateTimePicker1.Value);
-            komut.Parameters.AddWithValue("@p5", Convert.ToByte(TxtFaturaDurum.Text));
-            komut.Parameters.AddWithValue("@p6", richTextBox1.Text);
-            komut.Parameters.AddWithValue("@p7", TxtFaturaID.Text);
-            komut.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Güncellendi");
+            try
+            {
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                conn.Open();
+                SqlCommand komut = new SqlCommand("update Tbl_Fatura set FATURANO=@p1,FATKURULUS=@p2,FATTUTAR=@p3,FATSONODEME=@p4,FATDURUM=@p5,FATACIKLAMA=@p6 where FATURAID=@p7 ", conn);
+                komut.Parameters.AddWithValue("@p1", TxtFaturaNO.Text);
+                komut.Parameters.AddWithValue("@p2", TxtFaturaKurum.Text);
+                komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(TxtFaturaTutar.Text));
+                komut.Parameters.AddWithValue("@p4", dateTimePicker1.Value);
+                komut.Parameters.AddWithValue("@p5", Convert.ToByte(TxtFaturaDurum.Text));
+                komut.Parameters.AddWithValue("@p6", richTextBox1.Text);
+                komut.Parameters.AddWithValue("@p7", TxtFaturaID.Text);
+                komut.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Güncellendi");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Güncelleme işlemi esnasında fatura durumunu boş bırakmayınız ve ödendiyse 1, ödenmediyse 0 yazınız");
+            }
+            
         }
 
         private void BtnSil_Click(object sender, EventArgs e)
@@ -87,6 +104,16 @@ namespace Sayac_Proje
             TxtFaturaDurum.Text = "";
             richTextBox1.Text = "";
             TxtFaturaID.Text = "";
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TxtFaturaKurum_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

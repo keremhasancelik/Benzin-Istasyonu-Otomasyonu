@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Db_SayacModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Db_SayacModel1StoreContainer">
+    <EntitySet Name="Tbl_YakitKasasi" EntityType="Db_SayacModel1.Store.Tbl_YakitKasasi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tbl_MarketKasasi" EntityType="Db_SayacModel1.Store.Tbl_MarketKasasi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tbl_YikamaKasasi" EntityType="Db_SayacModel1.Store.Tbl_YikamaKasasi" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Tbl_YakitKasasi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pompaci" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="muhasebeci" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="zRaporu" Type="float" Nullable="true" />
+    <Property Name="otomasyon" Type="float" Nullable="true" />
+    <Property Name="halkPos1" Type="float" Nullable="true" />
+    <Property Name="halkPos2" Type="float" Nullable="true" />
+    <Property Name="ziraatPos1" Type="float" Nullable="true" />
+    <Property Name="ziraatPos2" Type="float" Nullable="true" />
+    <Property Name="kart" Type="float" Nullable="true" />
+    <Property Name="nakit" Type="float" Nullable="true" />
+    <Property Name="veresiye" Type="float" Nullable="true" />
+    <Property Name="pompacidanAlinan" Type="float" Nullable="true" />
+    <Property Name="gider" Type="float" Nullable="true" />
+    <Property Name="fisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="giderAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="toplam" Type="float" Nullable="true" />
+    <Property Name="acik" Type="float" Nullable="true" />
+    <Property Name="fazla" Type="float" Nullable="true" />
+    <Property Name="tahsilat" Type="float" Nullable="true" />
+    <Property Name="tahsilatAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="benzin" Type="float" Nullable="true" />
+    <Property Name="motorin" Type="float" Nullable="true" />
+    <Property Name="lpg" Type="float" Nullable="true" />
+    <Property Name="yakitLitre" Type="float" Nullable="true" />
+    <Property Name="yakitTutar" Type="float" Nullable="true" />
+    <Property Name="benzinStok" Type="float" Nullable="true" />
+    <Property Name="motorinStok" Type="float" Nullable="true" />
+    <Property Name="lpgStok" Type="float" Nullable="true" />
+    <Property Name="tarih" Type="datetime" Nullable="true" />
+    <Property Name="gelir" Type="float" Nullable="true" />
+    <Property Name="gelirFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="gelirAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tahsilatFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_MarketKasasi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="zRaporu" Type="float" Nullable="true" />
+    <Property Name="otomasyonToplam" Type="float" Nullable="true" />
+    <Property Name="gunSonu1" Type="float" Nullable="true" />
+    <Property Name="gunSonu2" Type="float" Nullable="true" />
+    <Property Name="kartToplam" Type="float" Nullable="true" />
+    <Property Name="nakit" Type="float" Nullable="true" />
+    <Property Name="veresiyeToplam" Type="float" Nullable="true" />
+    <Property Name="muhasebeTeslim" Type="float" Nullable="true" />
+    <Property Name="gider" Type="float" Nullable="true" />
+    <Property Name="gelirFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="giderAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="gelir" Type="float" Nullable="true" />
+    <Property Name="giderFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="gelirAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="toplam" Type="float" Nullable="true" />
+    <Property Name="acik" Type="float" Nullable="true" />
+    <Property Name="fazla" Type="float" Nullable="true" />
+    <Property Name="tahsilat" Type="float" Nullable="true" />
+    <Property Name="tahsilatFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tahsilatAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="kasiyer" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="muhasebeci" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="vardiyaNotu" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tarih" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Tbl_YikamaKasasi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kart" Type="float" Nullable="true" />
+    <Property Name="nakit" Type="float" Nullable="true" />
+    <Property Name="veresiye" Type="float" Nullable="true" />
+    <Property Name="kasaTeslim" Type="float" Nullable="true" />
+    <Property Name="gider" Type="float" Nullable="true" />
+    <Property Name="toplam" Type="float" Nullable="true" />
+    <Property Name="giderFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="giderAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tahsilat" Type="float" Nullable="true" />
+    <Property Name="tahsilatFisNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tahsilatAciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Aciklama" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="yikamaci" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="muhasebeci" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="tarih" Type="datetime" Nullable="true" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Db_SayacModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_YakitKasasi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pompaci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="muhasebeci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zRaporu" Type="Double" />
+          <Property Name="otomasyon" Type="Double" />
+          <Property Name="halkPos1" Type="Double" />
+          <Property Name="halkPos2" Type="Double" />
+          <Property Name="ziraatPos1" Type="Double" />
+          <Property Name="ziraatPos2" Type="Double" />
+          <Property Name="kart" Type="Double" />
+          <Property Name="nakit" Type="Double" />
+          <Property Name="veresiye" Type="Double" />
+          <Property Name="pompacidanAlinan" Type="Double" />
+          <Property Name="gider" Type="Double" />
+          <Property Name="fisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="giderAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="toplam" Type="Double" />
+          <Property Name="acik" Type="Double" />
+          <Property Name="fazla" Type="Double" />
+          <Property Name="tahsilat" Type="Double" />
+          <Property Name="tahsilatAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="benzin" Type="Double" />
+          <Property Name="motorin" Type="Double" />
+          <Property Name="lpg" Type="Double" />
+          <Property Name="yakitLitre" Type="Double" />
+          <Property Name="yakitTutar" Type="Double" />
+          <Property Name="benzinStok" Type="Double" />
+          <Property Name="motorinStok" Type="Double" />
+          <Property Name="lpgStok" Type="Double" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="gelir" Type="Double" />
+          <Property Name="gelirFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gelirAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tahsilatFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Db_SayacEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_YakitKasasi" EntityType="Self.Tbl_YakitKasasi" />
+          <EntitySet Name="Tbl_MarketKasasi" EntityType="Db_SayacModel1.Tbl_MarketKasasi" />
+          <EntitySet Name="Tbl_YikamaKasasi" EntityType="Db_SayacModel1.Tbl_YikamaKasasi" />
+        </EntityContainer>
+        <EntityType Name="Tbl_MarketKasasi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zRaporu" Type="Double" />
+          <Property Name="otomasyonToplam" Type="Double" />
+          <Property Name="gunSonu1" Type="Double" />
+          <Property Name="gunSonu2" Type="Double" />
+          <Property Name="kartToplam" Type="Double" />
+          <Property Name="nakit" Type="Double" />
+          <Property Name="veresiyeToplam" Type="Double" />
+          <Property Name="muhasebeTeslim" Type="Double" />
+          <Property Name="gider" Type="Double" />
+          <Property Name="gelirFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="giderAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gelir" Type="Double" />
+          <Property Name="giderFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gelirAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="toplam" Type="Double" />
+          <Property Name="acik" Type="Double" />
+          <Property Name="fazla" Type="Double" />
+          <Property Name="tahsilat" Type="Double" />
+          <Property Name="tahsilatFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tahsilatAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kasiyer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="muhasebeci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vardiyaNotu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Tbl_YikamaKasasi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kart" Type="Double" />
+          <Property Name="nakit" Type="Double" />
+          <Property Name="veresiye" Type="Double" />
+          <Property Name="kasaTeslim" Type="Double" />
+          <Property Name="gider" Type="Double" />
+          <Property Name="toplam" Type="Double" />
+          <Property Name="giderFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="giderAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tahsilat" Type="Double" />
+          <Property Name="tahsilatFisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tahsilatAciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yikamaci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="muhasebeci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Db_SayacModel1StoreContainer" CdmEntityContainer="Db_SayacEntities2">
+    <EntitySetMapping Name="Tbl_YakitKasasi">
+      <EntityTypeMapping TypeName="IsTypeOf(Db_SayacModel1.Tbl_YakitKasasi)">
+        <MappingFragment StoreEntitySet="Tbl_YakitKasasi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pompaci" ColumnName="pompaci" />
+          <ScalarProperty Name="muhasebeci" ColumnName="muhasebeci" />
+          <ScalarProperty Name="zRaporu" ColumnName="zRaporu" />
+          <ScalarProperty Name="otomasyon" ColumnName="otomasyon" />
+          <ScalarProperty Name="halkPos1" ColumnName="halkPos1" />
+          <ScalarProperty Name="halkPos2" ColumnName="halkPos2" />
+          <ScalarProperty Name="ziraatPos1" ColumnName="ziraatPos1" />
+          <ScalarProperty Name="ziraatPos2" ColumnName="ziraatPos2" />
+          <ScalarProperty Name="kart" ColumnName="kart" />
+          <ScalarProperty Name="nakit" ColumnName="nakit" />
+          <ScalarProperty Name="veresiye" ColumnName="veresiye" />
+          <ScalarProperty Name="pompacidanAlinan" ColumnName="pompacidanAlinan" />
+          <ScalarProperty Name="gider" ColumnName="gider" />
+          <ScalarProperty Name="fisNo" ColumnName="fisNo" />
+          <ScalarProperty Name="giderAciklama" ColumnName="giderAciklama" />
+          <ScalarProperty Name="toplam" ColumnName="toplam" />
+          <ScalarProperty Name="acik" ColumnName="acik" />
+          <ScalarProperty Name="fazla" ColumnName="fazla" />
+          <ScalarProperty Name="tahsilat" ColumnName="tahsilat" />
+          <ScalarProperty Name="tahsilatAciklama" ColumnName="tahsilatAciklama" />
+          <ScalarProperty Name="benzin" ColumnName="benzin" />
+          <ScalarProperty Name="motorin" ColumnName="motorin" />
+          <ScalarProperty Name="lpg" ColumnName="lpg" />
+          <ScalarProperty Name="yakitLitre" ColumnName="yakitLitre" />
+          <ScalarProperty Name="yakitTutar" ColumnName="yakitTutar" />
+          <ScalarProperty Name="benzinStok" ColumnName="benzinStok" />
+          <ScalarProperty Name="motorinStok" ColumnName="motorinStok" />
+          <ScalarProperty Name="lpgStok" ColumnName="lpgStok" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="gelir" ColumnName="gelir" />
+          <ScalarProperty Name="gelirFisNo" ColumnName="gelirFisNo" />
+          <ScalarProperty Name="gelirAciklama" ColumnName="gelirAciklama" />
+          <ScalarProperty Name="tahsilatFisNo" ColumnName="tahsilatFisNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_MarketKasasi">
+      <EntityTypeMapping TypeName="IsTypeOf(Db_SayacModel1.Tbl_MarketKasasi)">
+        <MappingFragment StoreEntitySet="Tbl_MarketKasasi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="zRaporu" ColumnName="zRaporu" />
+          <ScalarProperty Name="otomasyonToplam" ColumnName="otomasyonToplam" />
+          <ScalarProperty Name="gunSonu1" ColumnName="gunSonu1" />
+          <ScalarProperty Name="gunSonu2" ColumnName="gunSonu2" />
+          <ScalarProperty Name="kartToplam" ColumnName="kartToplam" />
+          <ScalarProperty Name="nakit" ColumnName="nakit" />
+          <ScalarProperty Name="veresiyeToplam" ColumnName="veresiyeToplam" />
+          <ScalarProperty Name="muhasebeTeslim" ColumnName="muhasebeTeslim" />
+          <ScalarProperty Name="gider" ColumnName="gider" />
+          <ScalarProperty Name="gelirFisNo" ColumnName="gelirFisNo" />
+          <ScalarProperty Name="giderAciklama" ColumnName="giderAciklama" />
+          <ScalarProperty Name="gelir" ColumnName="gelir" />
+          <ScalarProperty Name="giderFisNo" ColumnName="giderFisNo" />
+          <ScalarProperty Name="gelirAciklama" ColumnName="gelirAciklama" />
+          <ScalarProperty Name="toplam" ColumnName="toplam" />
+          <ScalarProperty Name="acik" ColumnName="acik" />
+          <ScalarProperty Name="fazla" ColumnName="fazla" />
+          <ScalarProperty Name="tahsilat" ColumnName="tahsilat" />
+          <ScalarProperty Name="tahsilatFisNo" ColumnName="tahsilatFisNo" />
+          <ScalarProperty Name="tahsilatAciklama" ColumnName="tahsilatAciklama" />
+          <ScalarProperty Name="kasiyer" ColumnName="kasiyer" />
+          <ScalarProperty Name="muhasebeci" ColumnName="muhasebeci" />
+          <ScalarProperty Name="vardiyaNotu" ColumnName="vardiyaNotu" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_YikamaKasasi">
+      <EntityTypeMapping TypeName="IsTypeOf(Db_SayacModel1.Tbl_YikamaKasasi)">
+        <MappingFragment StoreEntitySet="Tbl_YikamaKasasi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kart" ColumnName="kart" />
+          <ScalarProperty Name="nakit" ColumnName="nakit" />
+          <ScalarProperty Name="veresiye" ColumnName="veresiye" />
+          <ScalarProperty Name="kasaTeslim" ColumnName="kasaTeslim" />
+          <ScalarProperty Name="gider" ColumnName="gider" />
+          <ScalarProperty Name="toplam" ColumnName="toplam" />
+          <ScalarProperty Name="giderFisNo" ColumnName="giderFisNo" />
+          <ScalarProperty Name="giderAciklama" ColumnName="giderAciklama" />
+          <ScalarProperty Name="tahsilat" ColumnName="tahsilat" />
+          <ScalarProperty Name="tahsilatFisNo" ColumnName="tahsilatFisNo" />
+          <ScalarProperty Name="tahsilatAciklama" ColumnName="tahsilatAciklama" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="yikamaci" ColumnName="yikamaci" />
+          <ScalarProperty Name="muhasebeci" ColumnName="muhasebeci" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

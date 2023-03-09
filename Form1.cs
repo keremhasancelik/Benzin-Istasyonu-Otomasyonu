@@ -37,38 +37,57 @@ namespace Sayac_Proje
         public int urun;
         private void BtnGuncelle_Click(object sender, EventArgs e)
         {
-            acilis = int.Parse(TxtAcilis.Text);
-            kapanis = int.Parse(TxtKapanis.Text);
-            b_fiyat = Convert.ToDouble(CmbBFiyati.Text);
-            satilan = kapanis - acilis;
-            tutar = b_fiyat * satilan;
-            urun = int.Parse(CmbUrun.SelectedValue.ToString());
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("update Tbl_Sayac set URUN=@p1,POMPA=@p2,BRMFIYATI=@p3,ACILIS=@p4,KAPANIS=@p5,SATILANLITRE=@p6,TUTAR=@p7,TARIH=@p8 where SAYACID=@p9", conn);
-            komut.Parameters.AddWithValue("@p1", urun);
-            komut.Parameters.AddWithValue("@p2", CmbPompa.Text);
-            komut.Parameters.AddWithValue("@p3", Convert.ToDecimal( CmbBFiyati.Text));
-            komut.Parameters.AddWithValue("@p4", TxtAcilis.Text);
-            komut.Parameters.AddWithValue("@p5", TxtKapanis.Text);
-            komut.Parameters.AddWithValue("@p6", satilan.ToString());
-            komut.Parameters.AddWithValue("@p7", tutar);
-            komut.Parameters.AddWithValue("@p8", dateTimePicker1.Value);
-            komut.Parameters.AddWithValue("@p9", TxtSayacID.Text);
-            komut.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Güncellendi");
+            try
+            {
+                acilis = int.Parse(TxtAcilis.Text);
+                kapanis = int.Parse(TxtKapanis.Text);
+                b_fiyat = Convert.ToDouble(CmbBFiyati.Text);
+                satilan = kapanis - acilis;
+                tutar = b_fiyat * satilan;
+                urun = int.Parse(CmbUrun.SelectedValue.ToString());
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                conn.Open();
+                SqlCommand komut = new SqlCommand("update Tbl_Sayac set URUN=@p1,POMPA=@p2,BRMFIYATI=@p3,ACILIS=@p4,KAPANIS=@p5,SATILANLITRE=@p6,TUTAR=@p7,TARIH=@p8 where SAYACID=@p9", conn);
+                komut.Parameters.AddWithValue("@p1", urun);
+                komut.Parameters.AddWithValue("@p2", CmbPompa.Text);
+                komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(CmbBFiyati.Text));
+                komut.Parameters.AddWithValue("@p4", TxtAcilis.Text);
+                komut.Parameters.AddWithValue("@p5", TxtKapanis.Text);
+                komut.Parameters.AddWithValue("@p6", satilan.ToString());
+                komut.Parameters.AddWithValue("@p7", tutar);
+                komut.Parameters.AddWithValue("@p8", dateTimePicker1.Value);
+                komut.Parameters.AddWithValue("@p9", TxtSayacID.Text);
+                komut.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Güncellendi");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Lütfen ilgili alanları doldurarak yeniden deneyiniz.");
+            }
+           
         }
 
         private void BtnSil_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("delete from Tbl_Sayac where SAYACID=@p1",conn);
-            komut.Parameters.AddWithValue("@p1", TxtSayacID.Text);
-            komut.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Silindi");
+            try
+            {
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                conn.Open();
+                SqlCommand komut = new SqlCommand("delete from Tbl_Sayac where SAYACID=@p1", conn);
+                komut.Parameters.AddWithValue("@p1", TxtSayacID.Text);
+                komut.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Silindi");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Lütfen ilgili alanları doldurarak yeniden deneyiniz.");
+
+            }
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -282,7 +301,8 @@ namespace Sayac_Proje
             catch (Exception)
             {
 
-                throw;
+                MessageBox.Show("Lütfen ilgili alanları doldurarak yeniden deneyiniz.");
+
             }
         }
 
@@ -310,7 +330,7 @@ namespace Sayac_Proje
 
         private void BtnKurlar_Click(object sender, EventArgs e)
         {
-            FrmKurlar frm = new FrmKurlar();
+            frmPos frm = new frmPos();
             frm.Show();
         }
 
@@ -320,185 +340,249 @@ namespace Sayac_Proje
             frm.Show();
         }
 
+        private void btnSatis_Click(object sender, EventArgs e)
+        {
+            FrmSatis frm = new FrmSatis();
+            frm.Show();
+        }
+
+        private void dbSayacDataSetBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnKasa_Click(object sender, EventArgs e)
+        {
+            FrmKasa frm = new FrmKasa();
+            frm.ShowDialog();
+        }
+
+        private void BtnRaporlar_Click(object sender, EventArgs e)
+        {
+            Frm_YakitSatisOzet frm = new Frm_YakitSatisOzet();
+            frm.ShowDialog();
+        }
+
+        private void BtnGider_Click(object sender, EventArgs e)
+        {
+            Frm_Gider frm = new Frm_Gider();
+            frm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+            SqlConnection conn = new SqlConnection(bgl.Adres);
+            string komutt = "backup database model to disk='Db_Sayac.bak'";
+            SqlCommand cmd = new SqlCommand(komutt, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("Yedek alma işlemi tamamlandı");
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            frmGiris frm = new frmGiris();
+            frm.ShowDialog();
+        }
+
         private void BtnListele_Click(object sender, EventArgs e)
         {
-            
 
+            try
+            {
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter("select top(12) SAYACID,URUNAD,POMPA,BRMFIYATI,ACILIS,KAPANIS,SATILANLITRE,TUTAR,TARIH from Tbl_Sayac INNER JOIN Tbl_Urunn ON Tbl_Sayac.URUN=Tbl_Urunn.URUNID WHERE TARIH=@p1", conn);
+                da.SelectCommand.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                conn.Open();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                conn.Close();
 
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("select top(12) SAYACID,URUNAD,POMPA,BRMFIYATI,ACILIS,KAPANIS,SATILANLITRE,TUTAR,TARIH from Tbl_Sayac INNER JOIN Tbl_Urunn ON Tbl_Sayac.URUN=Tbl_Urunn.URUNID WHERE TARIH=@p1", conn);
-            da.SelectCommand.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            conn.Open();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            conn.Close();
+                //
+                decimal toplam = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    toplam += Convert.ToDecimal(dataGridView1.Rows[i].Cells[7].Value);
+                }
+                TxtToplamTutar.Text = toplam.ToString();
 
-            //
-            decimal toplam = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-            {
-                toplam += Convert.ToDecimal(dataGridView1.Rows[i].Cells[7].Value);
-            }
-            TxtToplamTutar.Text = toplam.ToString();
+                //
+                decimal toplamLitre = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    toplamLitre += Convert.ToDecimal(dataGridView1.Rows[i].Cells[6].Value);
+                }
+                TxtToplamLitre.Text = toplamLitre.ToString();
+                //
+                conn.Open();
+                SqlCommand komut = new SqlCommand("select sum(TTUTAR) from Tbl_BenzinSatis WHERE BTARIH=@p1", conn);
 
-            //
-            decimal toplamLitre = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-            {
-                toplamLitre += Convert.ToDecimal(dataGridView1.Rows[i].Cells[6].Value);
-            }
-            TxtToplamLitre.Text = toplamLitre.ToString();
-            //
-            conn.Open();
-            SqlCommand komut = new SqlCommand("select sum(TTUTAR) from Tbl_BenzinSatis WHERE BTARIH=@p1", conn);
-            komut.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            SqlDataReader dr = komut.ExecuteReader();
-            while (dr.Read())
-            {
-                LblBenzinTopTutar.Text = dr[0].ToString();
-            }
-            conn.Close();
-            //
-            conn.Open();
-            SqlCommand komut2 = new SqlCommand("select sum(TLITRE) from Tbl_BenzinSatis WHERE BTARIH=@p1", conn);
-            komut2.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            SqlDataReader dr2 = komut2.ExecuteReader();
-            while (dr2.Read())
-            {
-                LblBenzinTopLitre.Text = dr2[0].ToString();
-            }
-            conn.Close();
-            //
-            conn.Open();
-            SqlCommand komut3 = new SqlCommand("select sum(LTLITRE) from Tbl_LpgSatis WHERE LTARIH=@p1", conn);
-            komut3.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            SqlDataReader dr3 = komut3.ExecuteReader();
-            while (dr3.Read())
-            {
-                LblLpgTopLitre.Text = dr3[0].ToString();
-            }
-            conn.Close();
-            //
-            conn.Open();
-            SqlCommand komut4 = new SqlCommand("select sum(LTTUTAR) from Tbl_LpgSatis WHERE LTARIH=@p1", conn);
-            komut4.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            SqlDataReader dr4 = komut4.ExecuteReader();
-            while (dr4.Read())
-            {
-                LblLpgTopTutar.Text = dr4[0].ToString();
-            }
-            conn.Close();
-            //
-            conn.Open();
-            SqlCommand komut5 = new SqlCommand("select sum(MTTUTAR) from Tbl_MotorinSatis WHERE MTARIH=@p1", conn);
-            komut5.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            SqlDataReader dr5 = komut5.ExecuteReader();
-            while (dr5.Read())
-            {
-                LblMotorinTopTutar.Text = dr5[0].ToString();
-            }
-            conn.Close();
-            //
-            conn.Open();
-            SqlCommand komut6 = new SqlCommand("select sum(MTLITRE) from Tbl_MotorinSatis WHERE MTARIH=@p1", conn);
-            komut6.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
-            SqlDataReader dr6 = komut6.ExecuteReader();
-            while (dr6.Read())
-            {
-                LblMotorinTopLitre.Text = dr6[0].ToString();
-            }
-            conn.Close();
+                komut.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                SqlDataReader dr = komut.ExecuteReader();
+                while (dr.Read())
+                {
+                    LblBenzinTopTutar.Text = dr[0].ToString();
+                }
+                conn.Close();
+                //
+                conn.Open();
+                SqlCommand komut2 = new SqlCommand("select sum(TLITRE) from Tbl_BenzinSatis WHERE BTARIH=@p1", conn);
+                komut2.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                SqlDataReader dr2 = komut2.ExecuteReader();
+                while (dr2.Read())
+                {
+                    LblBenzinTopLitre.Text = dr2[0].ToString();
+                }
+                conn.Close();
+                //
+                conn.Open();
+                SqlCommand komut3 = new SqlCommand("select sum(LTLITRE) from Tbl_LpgSatis WHERE LTARIH=@p1", conn);
+                komut3.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                SqlDataReader dr3 = komut3.ExecuteReader();
+                while (dr3.Read())
+                {
+                    LblLpgTopLitre.Text = dr3[0].ToString();
+                }
+                conn.Close();
+                //
+                conn.Open();
+                SqlCommand komut4 = new SqlCommand("select sum(LTTUTAR) from Tbl_LpgSatis WHERE LTARIH=@p1", conn);
+                komut4.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                SqlDataReader dr4 = komut4.ExecuteReader();
+                while (dr4.Read())
+                {
+                    LblLpgTopTutar.Text = dr4[0].ToString();
+                }
+                conn.Close();
+                //
+                conn.Open();
+                SqlCommand komut5 = new SqlCommand("select sum(MTTUTAR) from Tbl_MotorinSatis WHERE MTARIH=@p1", conn);
+                komut5.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                SqlDataReader dr5 = komut5.ExecuteReader();
+                while (dr5.Read())
+                {
+                    LblMotorinTopTutar.Text = dr5[0].ToString();
+                }
+                conn.Close();
+                //
+                conn.Open();
+                SqlCommand komut6 = new SqlCommand("select sum(MTLITRE) from Tbl_MotorinSatis WHERE MTARIH=@p1", conn);
+                komut6.Parameters.Add("@p1", SqlDbType.Date).Value = DateTime.Now;
+                SqlDataReader dr6 = komut6.ExecuteReader();
+                while (dr6.Read())
+                {
+                    LblMotorinTopLitre.Text = dr6[0].ToString();
+                }
+                conn.Close();
 
-            //
-            conn.Open();
-            SqlCommand komut7 = new SqlCommand("select sum(GELIRTUTAR) from Tbl_Gelir", conn);
-            SqlDataReader dr7 = komut7.ExecuteReader();
-            while (dr7.Read())
-            {
-                LblGelir.Text = dr7[0].ToString();
+                //
+                conn.Open();
+                SqlCommand komut7 = new SqlCommand("select sum(GELIRTUTAR) from Tbl_Gelir", conn);
+                SqlDataReader dr7 = komut7.ExecuteReader();
+                while (dr7.Read())
+                {
+                    LblGelir.Text = dr7[0].ToString();
+                }
+                conn.Close();
+
             }
-            conn.Close();
+            catch (Exception)
+            {
+
+                MessageBox.Show("Eksik bilgileri doldurunuz");
+            }
 
         }
         public decimal stok, t_stok;
         private void BtnEkle_Click(object sender, EventArgs e)
         {
-           
-            acilis =int.Parse( TxtAcilis.Text);
-            kapanis =int.Parse( TxtKapanis.Text);
-            b_fiyat = Convert.ToDouble ( CmbBFiyati.Text);
-            satilan = kapanis - acilis;
-            stok = Convert.ToDecimal(CmbStok.Text);
 
-            t_stok = stok - satilan;
-            tutar = b_fiyat * satilan;
-            urun = int.Parse(CmbUrun.SelectedValue.ToString());
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("insert into Tbl_Sayac(URUN,POMPA,BRMFIYATI,ACILIS,KAPANIS,SATILANLITRE,TUTAR,TARIH) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)", conn);
-            komut.Parameters.AddWithValue("@p1", urun);
-            komut.Parameters.AddWithValue("@p2", CmbPompa.Text);
-            komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(CmbBFiyati.Text));
-            komut.Parameters.AddWithValue("@p4", TxtAcilis.Text);
-            komut.Parameters.AddWithValue("@p5", TxtKapanis.Text);
-            komut.Parameters.AddWithValue("@p6", satilan.ToString());
-            komut.Parameters.AddWithValue("@p7", tutar);
-            komut.Parameters.AddWithValue("@p8", dateTimePicker1.Value);
-            komut.ExecuteNonQuery();
-            conn.Close();
-
-            //
-            conn.Open();
-            SqlCommand komut2 = new SqlCommand("update Tbl_Urunn set STOK=@p1 where URUNID=@p2", conn);
-            komut2.Parameters.AddWithValue("@p1", t_stok);
-            komut2.Parameters.AddWithValue("@p2", urun);
-            komut2.ExecuteNonQuery();
-            conn.Close();
-            //
-            if (urun==2)
+            try
             {
-                
-                conn.Open();
-                SqlCommand komut3 = new SqlCommand("insert into Tbl_BenzinSatis(TLITRE,TTUTAR,BTARIH) values(@p1,@p2,@p3)", conn);
-                komut3.Parameters.AddWithValue("@p1", satilan.ToString());
-                komut3.Parameters.AddWithValue("@p2", tutar);
-                komut3.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
+                acilis = int.Parse(TxtAcilis.Text);
+                kapanis = int.Parse(TxtKapanis.Text);
+                b_fiyat = Convert.ToDouble(CmbBFiyati.Text);
+                satilan = kapanis - acilis;
+                stok = Convert.ToDecimal(CmbStok.Text);
 
-                komut3.ExecuteNonQuery();
-                conn.Close();
-            }
-            if (urun==3)
-            {
+                t_stok = stok - satilan;
+                tutar = b_fiyat * satilan;
+                urun = int.Parse(CmbUrun.SelectedValue.ToString());
+                SqlConnection conn = new SqlConnection(bgl.Adres);
                 conn.Open();
-                SqlCommand komut4 = new SqlCommand("insert into Tbl_MotorinSatis(MTLITRE,MTTUTAR,MTARIH) values(@p1,@p2,@p3)", conn);
-                komut4.Parameters.AddWithValue("@p1", satilan.ToString());
-                komut4.Parameters.AddWithValue("@p2", tutar);
-                komut4.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
-                komut4.ExecuteNonQuery();
+                SqlCommand komut = new SqlCommand("insert into Tbl_Sayac(URUN,POMPA,BRMFIYATI,ACILIS,KAPANIS,SATILANLITRE,TUTAR,TARIH) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)", conn);
+                komut.Parameters.AddWithValue("@p1", urun);
+                komut.Parameters.AddWithValue("@p2", CmbPompa.Text);
+                komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(CmbBFiyati.Text));
+                komut.Parameters.AddWithValue("@p4", TxtAcilis.Text);
+                komut.Parameters.AddWithValue("@p5", TxtKapanis.Text);
+                komut.Parameters.AddWithValue("@p6", satilan.ToString());
+                komut.Parameters.AddWithValue("@p7", tutar);
+                komut.Parameters.AddWithValue("@p8", dateTimePicker1.Value);
+                komut.ExecuteNonQuery();
                 conn.Close();
-            }
-            if (urun==4)
-            {
-                conn.Open();
-                SqlCommand komut5 = new SqlCommand("insert into Tbl_LpgSatis(LTLITRE,LTTUTAR,LTARIH) values(@p1,@p2,@p3)", conn);
-                komut5.Parameters.AddWithValue("@p1", satilan.ToString());
-                komut5.Parameters.AddWithValue("@p2", tutar);
-                komut5.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
-                komut5.ExecuteNonQuery();
-                conn.Close();
-            }
 
-            //
-            
-            conn.Open();
-            SqlCommand komut6 = new SqlCommand("insert into Tbl_Gelir(YAKIT,GELIRTUTAR,GELIRTARIH) VALUES(@p1,@p2,@p3)", conn);
-            komut6.Parameters.AddWithValue("@p1", urun);
-            komut6.Parameters.AddWithValue("@p2", tutar);
-            komut6.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
-            komut6.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Eklendi");
+                //
+                conn.Open();
+                SqlCommand komut2 = new SqlCommand("update Tbl_Urunn set STOK=@p1 where URUNID=@p2", conn);
+                komut2.Parameters.AddWithValue("@p1", t_stok);
+                komut2.Parameters.AddWithValue("@p2", urun);
+                komut2.ExecuteNonQuery();
+                conn.Close();
+                //
+                if (urun == 2)
+                {
+
+                    conn.Open();
+                    SqlCommand komut3 = new SqlCommand("insert into Tbl_BenzinSatis(TLITRE,TTUTAR,BTARIH) values(@p1,@p2,@p3)", conn);
+                    komut3.Parameters.AddWithValue("@p1", satilan.ToString());
+                    komut3.Parameters.AddWithValue("@p2", tutar);
+                    komut3.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
+
+                    komut3.ExecuteNonQuery();
+                    conn.Close();
+                }
+                if (urun == 3)
+                {
+                    conn.Open();
+                    SqlCommand komut4 = new SqlCommand("insert into Tbl_MotorinSatis(MTLITRE,MTTUTAR,MTARIH) values(@p1,@p2,@p3)", conn);
+                    komut4.Parameters.AddWithValue("@p1", satilan.ToString());
+                    komut4.Parameters.AddWithValue("@p2", tutar);
+                    komut4.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
+                    komut4.ExecuteNonQuery();
+                    conn.Close();
+                }
+                if (urun == 4)
+                {
+                    conn.Open();
+                    SqlCommand komut5 = new SqlCommand("insert into Tbl_LpgSatis(LTLITRE,LTTUTAR,LTARIH) values(@p1,@p2,@p3)", conn);
+                    komut5.Parameters.AddWithValue("@p1", satilan.ToString());
+                    komut5.Parameters.AddWithValue("@p2", tutar);
+                    komut5.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
+                    komut5.ExecuteNonQuery();
+                    conn.Close();
+                }
+
+                //
+
+                conn.Open();
+                SqlCommand komut6 = new SqlCommand("insert into Tbl_Gelir(YAKIT,GELIRTUTAR,GELIRTARIH) VALUES(@p1,@p2,@p3)", conn);
+                komut6.Parameters.AddWithValue("@p1", urun);
+                komut6.Parameters.AddWithValue("@p2", tutar);
+                komut6.Parameters.AddWithValue("@p3", dateTimePicker1.Value);
+                komut6.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Eklendi");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Eksik bilgileri doldurunuz");
+            }
 
         }
     }

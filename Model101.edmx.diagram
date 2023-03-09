@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="657e2b55116c4d888b28254b3ad6cbe2" Name="Diagram1" ZoomLevel="89">
+        <EntityTypeShape EntityType="Db_SayacModel1.Tbl_YakitKasasi" Width="1.5" PointX="1.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_SayacModel1.Tbl_MarketKasasi" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Db_SayacModel1.Tbl_YikamaKasasi" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

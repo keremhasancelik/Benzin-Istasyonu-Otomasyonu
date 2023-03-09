@@ -60,48 +60,66 @@ namespace Sayac_Proje
 
         private void BtnGuncelle_Click(object sender, EventArgs e)
         {
-            odeme = Convert.ToDecimal(TxtOdeme.Text);
-            borc = Convert.ToDecimal(TxtBorc.Text);
-            borc_alacak = borc - odeme;
+            try
+            {
+                odeme = Convert.ToDecimal(TxtOdeme.Text);
+                borc = Convert.ToDecimal(TxtBorc.Text);
+                borc_alacak = borc - odeme;
+
+                urun = int.Parse(CmbUrunAdi.SelectedValue.ToString());
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                conn.Open();
+                SqlCommand komut = new SqlCommand("update Tbl_Tedarikci set TEDFIRMA=@p1,TEDURUN=@p2,TEDODEME=@p3,TEDBORC=@p4,TEDBORCALACAK=@p5,TEDTELEFON=@p6,TEDMAIL=@p7 where TEDID=@p8", conn);
+                komut.Parameters.AddWithValue("@p1", TxtTedarikciFirma.Text);
+                komut.Parameters.AddWithValue("@p2", urun);
+                komut.Parameters.AddWithValue("@p3", Convert.ToDecimal(TxtOdeme.Text));
+                komut.Parameters.AddWithValue("@p4", Convert.ToDecimal(TxtBorc.Text));
+                komut.Parameters.AddWithValue("@p5", Convert.ToDecimal(borc_alacak));
+                komut.Parameters.AddWithValue("@p6", MskTel.Text);
+                komut.Parameters.AddWithValue("@p7", TxtMail.Text);
+                komut.Parameters.AddWithValue("@p8", TxtTedarikciID.Text);
+                komut.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Güncellendi");
+            }
+            catch (Exception hata)
+            {
+
+                MessageBox.Show(hata.ToString());
+            }
             
-            urun = int.Parse(CmbUrunAdi.SelectedValue.ToString());
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("update Tbl_Tedarikci set TEDFIRMA=@p1,TEDURUN=@p2,TEDODEME=@p3,TEDBORC=@p4,TEDBORCALACAK=@p5,TEDTELEFON=@p6,TEDMAIL=@p7 where TEDID=@p8", conn);
-            komut.Parameters.AddWithValue("@p1", TxtTedarikciFirma.Text);
-            komut.Parameters.AddWithValue("@p2", urun);
-            komut.Parameters.AddWithValue("@p3", Convert.ToDecimal( TxtOdeme.Text));
-            komut.Parameters.AddWithValue("@p4", Convert.ToDecimal(TxtBorc.Text));
-            komut.Parameters.AddWithValue("@p5", Convert.ToDecimal(borc_alacak)); 
-            komut.Parameters.AddWithValue("@p6", MskTel.Text);
-            komut.Parameters.AddWithValue("@p7", TxtMail.Text);
-            komut.Parameters.AddWithValue("@p8", TxtTedarikciID.Text);
-            komut.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Güncellendi");
         }
 
         int urun;
         private void BtnEkle_Click(object sender, EventArgs e)
         {
-            odeme = Convert.ToDecimal( TxtOdeme.Text);
-            borc = Convert.ToDecimal( TxtBorc.Text);
-            borc_alacak = borc - odeme;
-            urun = int.Parse(CmbUrunAdi.SelectedValue.ToString());
-            SqlConnection conn = new SqlConnection(bgl.Adres);
-            conn.Open();
-            SqlCommand komut = new SqlCommand("insert into Tbl_Tedarikci(TEDFIRMA,TEDURUN,TEDODEME,TEDBORC,TEDBORCALACAK,TEDTELEFON,TEDMAIL) VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7)",conn);
-            komut.Parameters.AddWithValue("@p1", TxtTedarikciFirma.Text);
-            komut.Parameters.AddWithValue("@p2", urun);
-            komut.Parameters.AddWithValue("@p3", TxtOdeme.Text);
-            komut.Parameters.AddWithValue("@p4", TxtBorc.Text);
-            komut.Parameters.AddWithValue("@p5", Convert.ToDecimal(borc_alacak));
-            komut.Parameters.AddWithValue("@p6", MskTel.Text);
-            komut.Parameters.AddWithValue("@p7", TxtMail.Text);
-            
-            komut.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Eklendi");
+            try
+            {
+                odeme = Convert.ToDecimal(TxtOdeme.Text);
+                borc = Convert.ToDecimal(TxtBorc.Text);
+                borc_alacak = borc - odeme;
+                urun = int.Parse(CmbUrunAdi.SelectedValue.ToString());
+                SqlConnection conn = new SqlConnection(bgl.Adres);
+                conn.Open();
+                SqlCommand komut = new SqlCommand("insert into Tbl_Tedarikci(TEDFIRMA,TEDURUN,TEDODEME,TEDBORC,TEDBORCALACAK,TEDTELEFON,TEDMAIL) VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7)", conn);
+                komut.Parameters.AddWithValue("@p1", TxtTedarikciFirma.Text);
+                komut.Parameters.AddWithValue("@p2", urun);
+                komut.Parameters.AddWithValue("@p3", TxtOdeme.Text);
+                komut.Parameters.AddWithValue("@p4", TxtBorc.Text);
+                komut.Parameters.AddWithValue("@p5", Convert.ToDecimal(borc_alacak));
+                komut.Parameters.AddWithValue("@p6", MskTel.Text);
+                komut.Parameters.AddWithValue("@p7", TxtMail.Text);
+
+                komut.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Eklendi");
+            }
+            catch (Exception hata)
+            {
+
+                MessageBox.Show(hata.ToString());
+            }
+           
         }
     }
 }

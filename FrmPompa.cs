@@ -89,10 +89,10 @@ namespace Sayac_Proje
                 conn.Close();
                 MessageBox.Show("Güncellendi");
             }
-            catch (Exception)
+            catch (Exception hata)
             {
 
-                throw;
+                MessageBox.Show(hata.ToString());
             }
         }
 
@@ -105,6 +105,17 @@ namespace Sayac_Proje
             CmbUrun.Text = dataGridView1.Rows[secilen].Cells[4].Value.ToString();
             TxtTankNo.Text = dataGridView1.Rows[secilen].Cells[3].Value.ToString();
             richTextBox1.Text = dataGridView1.Rows[secilen].Cells[5].Value.ToString();
+        }
+
+        private void BtnSil_Click(object sender, EventArgs e)
+        {
+            TxtPompaID.Text = "";
+            TxtAdaNo.Text = "";
+            TxtPompaNO.Text = "";
+            TxtTankNo.Text = "";
+            TxtUrunAd.Text = "";
+            richTextBox1.Text = "";
+            CmbUrun.Text = "";
         }
     }
 }
